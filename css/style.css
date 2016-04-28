@@ -1,0 +1,96 @@
+
+
+
+.chart {
+  height: 500px;
+  margin-bottom: 20px;
+}
+body {
+  font: 11px 'Oxygen', sans-serif;
+}
+
+#clear{
+clear: both;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+h5{
+margin-bottom: 20px;
+}
+
+.dot {
+  stroke: #000;
+  opacity: 0.75;
+}
+
+table.bridges{
+table-layout: fixed;
+margin: 10px;
+}
+
+th.amount, td.amount {
+	text-align: right;
+}
+
+#key{
+    width:200px;
+    height: 100px;
+    position:absolute;
+    top:300px;
+    right:5px;
+    display:block;
+}
+
+#key h4{
+    font: bold 14px 'Oxygen', sans-serif;
+    margin-bottom: 5px;
+
+}
+.key{
+    font: 11px 'Oxygen', sans-serif;
+}
+.key i{
+    margin-right:10px;
+    
+}
+
+.dot{
+    cursor:pointer;
+}
+text.label{
+    font-size:15px;
+}
+#tooltip {
+        position: fixed;
+        display:inline-block;
+        height: auto;
+        padding: 5px 10px;
+        background-color: white;
+        border-radius: 2px;
+        border: 1px solid rgba(0,0,0,0.2);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+        color:black;
+        top:0;
+        left:0;
+}
+
+#tooltip.hidden {
+        display: none;
+}
+#tooltip p {
+        margin: 0;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+}
+
+footer{
+margin-bottom: 20px;
+}

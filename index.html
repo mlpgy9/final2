@@ -1,0 +1,95 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Boone County Bridges</title><?php /* EDIT ME */ ?>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body class="">
+
+    <div id="main-wrapper" class="">
+        <div id="main-content" class="container">
+            <header class="row">
+                <div class="social-links col-md-12"></div>
+                <div class="col-md-12">
+
+                    <h1>The Bridges of Boone County</h1>
+                    <h5>According to the National Inventory Bridge Inventory Database, the sufficiency rating is a method of calculating the bridge's sufficiency to remain in service based on four factors. The sufficiency rating is the overall rating of a bridge's fitness for the duty it performs. The number is a percentage where 100 percent would be a completely sufficient bridge and zero would be an entirely insufficient bridge. The bridges built in Boone County since 1905 have an average sufficiency rating of 6.78.  The inventory database says that a low sufficiency rating may be caused by "structural defects, narrow lanes, low vertical clearance, or any of many possible issues."<br><br>
+The scatterplot below compares the sufficiency rating of a bridge with the year it was built while also considering the material the bridge is made out of. A lot of bridges were built using prestressed concrete in the 1980s and many of these bridges have good sufficiency ratings. </h5>
+                    <div class="byline">By <a href="#">Morgan Purdy</a></div>
+					<div id="clear"></div>
+                    <div class="meta">
+                        Published May 1, 2016
+                    </div>
+                </div>
+            </header>
+
+            <section class="row">
+
+            <div class="col-md-12 chart">                        <!-- A hidden div that will contain a tooltip for our chart. -->
+            <div id="tooltip" class="hidden"><p></p></div>
+            <!-- A key to our color codes. We'll uncomment this later. -->
+            <div id="key">
+                <h4>Material of bridge</h4>
+                <div id="key-table"></div>
+            </div> 
+            </div>
+            
+
+            <h5>Please use this table to search through all 384 bridges in Boone County.</h5>
+            <div id ="tableholder">
+             <table class="bridges table table-striped table-bordered">
+                    <thead>
+                        <th class="place">Place</th>
+                        <th class="year">Year Built</th>
+                        <th class="length">Length (m)</th>
+                        <th class="rating">Sufficiency Rating</th>
+                        <th class="material">Material Design</th>
+                        <th class="design">Design Construction</th>
+                        <th class="status">Status</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            
+            </div>
+
+            </section>
+
+            <footer>
+                <div id="source-line"><a href="http://nationalbridges.com/index.php">Source: National Bridge Inventory Database.</a></div>
+            </footer>
+
+        </div>
+    </div>
+
+
+
+    <!-- jQuery.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+    <!-- D3.js -->
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.js" charset="utf-8"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <!-- Our application script -->
+    <script src="js/moment.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

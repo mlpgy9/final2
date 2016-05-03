@@ -14,6 +14,7 @@
 
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"/>
     <link rel="stylesheet" href="css/style.css"/>
+    
 <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
 </head>
@@ -40,6 +41,22 @@ The scatterplot below compares the sufficiency rating of a bridge with the year 
             <section class="row">
 
             <div class="col-md-12 chart">                        <!-- A hidden div that will contain a tooltip for our chart. -->
+<!-- 
+<p>Material:</p> 
+  <select>
+  <option value="cc">Concrete Continuous</option>
+  <option value="sc">Steel Continuous</option>
+  <option value="pc">Prestressed Concrete*</option>
+  <option value="steel">Steel</option>
+  <option value="concrete">Concrete</option>
+  <option value="pcc">Prestressed concrete continuous</option>
+  <option value="Aluminum">Aluminum, Wrought Iron, or Cast Iron</option>
+</select>
+ -->
+ 
+ <div id="filter">
+    <b>Material:</b>
+</div>
             <div id="tooltip" class="hidden"><p></p></div>
             <!-- A key to our color codes. We'll uncomment this later. -->
             <div id="key">
@@ -87,6 +104,9 @@ The scatterplot below compares the sufficiency rating of a bridge with the year 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 	<script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+	
+	
+	
     <!-- Our application script -->
     <script src="js/moment.min.js"></script>
     <script src="js/script.js"></script>

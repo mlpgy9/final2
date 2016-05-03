@@ -3,15 +3,22 @@
 
 .chart {
   height: 500px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 body {
   font: 11px 'Oxygen', sans-serif;
 }
 
+select{
+margin-left: 25px;
+margin-top: 10px;
+}
+/* 
+
 #clear{
 clear: both;
 }
+ */
 
 .axis path,
 .axis line {
@@ -22,11 +29,12 @@ clear: both;
 
 h5{
 margin-bottom: 20px;
+margin-top: 30px;
 }
 
 .dot {
   stroke: #000;
-  opacity: 0.75;
+  opacity: 0.6;
 }
 
 table.bridges{
@@ -39,7 +47,7 @@ th.amount, td.amount {
 }
 
 #key{
-    width:200px;
+    width:210px;
     height: 100px;
     position:absolute;
     top:300px;
@@ -55,9 +63,12 @@ th.amount, td.amount {
 .key{
     font: 11px 'Oxygen', sans-serif;
 }
-.key i{
+
+.key span {
     margin-right:10px;
-    
+    width: 10px;
+    height: 10px;
+    display: inline-block;   
 }
 
 .dot{
@@ -90,6 +101,25 @@ text.label{
         font-size: 16px;
         line-height: 20px;
 }
+
+
+.palette {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: bottom;
+  margin: 4px 0 4px 6px;
+  padding: 4px;
+  background: #fff;
+  border: solid 1px #aaa;
+}
+
+.swatch {
+  display: block;
+  vertical-align: middle;
+  width: 37px;
+  height: 22px;
+}
+
 
 footer{
 margin-bottom: 20px;

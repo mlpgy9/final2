@@ -37,7 +37,7 @@ var y = d3.scale.linear()
 
 var color = d3.scale.ordinal()
     .domain(['Concrete continuous','Steel continuous','Prestressed concrete*', 'Steel', 'Concrete', 'Prestressed concrete continuous'])
-    .range(['#008000', ' #ff1aff','#1a75ff','#33ff33', '#6600ff', '#ff3399','#1affff' ,'#000000']);
+    .range(["#1b9e77","#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02","#a6761d","#666666"]);
 
 // `xAxis` and `yAxis` are functions as well.
 // We'll call them later in the code, but for now, we just want to assign them some properties:
@@ -64,6 +64,9 @@ var svg = d3.select(".chart").append("svg") // Appends the <svg> tag to the .cha
     .attr("class", "chart-g") //assigns the <g> tag a class
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); //Offsets the .chart-g <g> element by the values left and top margins. Basically the same as a left/right position.
 
+var dropDown = d3.select("#filter").append("select")
+                    .attr("MaterialDesign");
+
 
 // /* END GLOBAL VARIABLES ---------------------- */
 // 
@@ -86,6 +89,8 @@ if (error) throw error;
     d.Suffrating = +d.Suffrating;
     d.Built = +d.Built;
   });
+  
+
 
 //console.log(data);
     // Get the highest and lowest `Score` values from the data.
@@ -131,6 +136,8 @@ if (error) throw error;
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .text("Sufficiency Rating")
+        
+
 
 	svg.selectAll(".dot")
       .data(data)
@@ -139,7 +146,7 @@ if (error) throw error;
       .attr("r", 3.5)
       .attr("cx", function(d) {  return x(d.Built); })
       .attr("cy", function(d) { return y(d.Suffrating); })
-      .style("fill", function(d) { return color(d.species); });
+      .style("fill", function(d) { return color(d.MaterialDesign); });
 // SELECT
       // First we select the elements we're going to create.
       // That may sound a little weird since these elements don't exist yet,
@@ -177,8 +184,7 @@ if (error) throw error;
             tooltip.classed("hidden",false);
 
             tooltip.select("p")
-                .text("Design Construction:" + d.DesignConstruction + 
-                "Functional Class:" + d.FunctionalClass);
+                .text("Place: "+ d.Place + " Design Construction:" + d.DesignConstruction);
         })
         
         
@@ -186,6 +192,8 @@ if (error) throw error;
         .on("mouseout", function(d){
             tooltip.classed("hidden",true);
         });
+        
+        
 
 
         // Add a legend to the chart
@@ -200,10 +208,23 @@ if (error) throw error;
             // icon, and adding the color as an inline style attribute.
             // Not the most elegant way, but important to know you can do!
             .html(function(d){
-                return "<i class='fa fa-circle' style='color:"
+                return "<span class='fa fa-circle' style='background-color:"
                 +color(d)+
-                ";'></i>"+d;});
+                ";'></span>"+d;});
+                
+                
+var options = dropDown.selectAll("option")
+         .data(data)
+         .enter()
+         .append("option");
+
+options.text(function (d) { return d.MaterialDesign; })
+         .attr("value", function (d) { return d.MaterialDesign; });
+         
+         
 });
+
+
 
 //TABLE STARTS HERE TABLE STARTS HERE
 

@@ -223,14 +223,14 @@ var options = dropDown.selectAll("option")
          .enter()
          .append("option");
          
-// var usedMaterial = {};
-// $("select[name='MaterialDesign'] > option").each(function () {
-//     if(usedMaterial[this.text]) {
-//         $(this).remove();
-//     } else {
-//         usedMaterial[this.text] = this.value;
-//     }
-// });
+var usedMaterial = {};
+$("select[name='MaterialDesign'] > option").each(function () {
+    if(usedMaterial[this.text]) {
+        $(this).remove();
+    } else {
+        usedMaterial[this.text] = this.value;
+    }
+});
 
 options.text(function (d) { return d.MaterialDesign; })
          .attr("value", function (d) { return d.MaterialDesign; });
@@ -249,7 +249,16 @@ options.text(function (d) { return d.MaterialDesign; })
       svg.selectAll(".dot")
           .filter(function(d) {return selected == d.MaterialDesign;})
           .attr("display", display); 
-          });        
+          });   
+          
+          var usedMaterial = {};
+$("select[name='MaterialDesign'] > option").each(function () {
+    if(usedMaterial[this.text]) {
+        $(this).remove();
+    } else {
+        usedMaterial[this.text] = this.value;
+    }
+});     
 });
 
 

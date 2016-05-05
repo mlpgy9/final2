@@ -1,6 +1,3 @@
-
-
-
 .chart {
   height: 500px;
   margin-bottom: 50px;
@@ -13,18 +10,23 @@ select{
 margin-left: 25px;
 margin-top: 10px;
 }
-/* 
 
-#clear{
-clear: both;
-}
- */
 
 .axis path,
 .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+}
+
+p{
+display: inline-block;
+}
+
+.indicator{
+font-family: 'Arial', sans-serif;
+font-size: 16px;
+font-weight: bolder;
 }
 
 h5{
@@ -101,6 +103,14 @@ text.label{
         font-size: 16px;
         line-height: 20px;
 }
+
+.placeplot{
+font-family: 'Arial', sans-serif;
+font-size: 14px;
+font-weight: bolder;
+}
+
+
 
 
 .palette {

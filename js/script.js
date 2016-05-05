@@ -65,7 +65,7 @@ var svg = d3.select(".chart").append("svg") // Appends the <svg> tag to the .cha
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); //Offsets the .chart-g <g> element by the values left and top margins. Basically the same as a left/right position.
 
 var dropDown = d3.select("#filter").append("select")
-                    .attr("MaterialDesign");
+                    .attr("name", "MaterialDesign");
 
 
 // /* END GLOBAL VARIABLES ---------------------- */
@@ -183,8 +183,13 @@ if (error) throw error;
                 .style("top" , (d3.event.pageY - 30 - document.body.scrollTop ) + "px");
             tooltip.classed("hidden",false);
 
-            tooltip.select("p")
-                .text("Place: "+ d.Place + " Design Construction:" + d.DesignConstruction);
+             // tooltip.select("p")
+//                 .text(d.Place + " Design Construction:" + d.DesignConstruction);
+//                 
+            tooltip.html(	"<span class='placeplot'>"+d.Place+"</span><br>"+
+ 	"<span class='design'>Design Construction: "+d.DesignConstruction+"</span><br>"+
+ 	"<span class='built'>Year Built: "+d.Built+"</span><br>"+
+ 	"<span class='length'>Length(m): "+d.Length+"</span><br>");
         })
         
         
@@ -217,11 +222,43 @@ var options = dropDown.selectAll("option")
          .data(data)
          .enter()
          .append("option");
+         
+var usedMaterial = {};
+$("select[name='MaterialDesign'] > option").each(function () {
+    if(usedMaterial[this.text]) {
+        $(this).remove();
+    } else {
+        usedMaterial[this.text] = this.value;
+    }
+});
 
 options.text(function (d) { return d.MaterialDesign; })
          .attr("value", function (d) { return d.MaterialDesign; });
          
-         
+		
+	dropDown.on("change", function() {
+      var selected = this.value;
+      displayOthers = this.checked ? "inline" : "none";
+      display = this.checked ? "none" : "inline";
+
+
+      svg.selectAll(".dot")
+          .filter(function(d) {return selected != d.MaterialDesign;})
+          .attr("display", displayOthers);
+          
+      svg.selectAll(".dot")
+          .filter(function(d) {return selected == d.MaterialDesign;})
+          .attr("display", display); 
+          });   
+          
+          var usedMaterial = {};
+$("select[name='MaterialDesign'] > option").each(function () {
+    if(usedMaterial[this.text]) {
+        $(this).remove();
+    } else {
+        usedMaterial[this.text] = this.value;
+    }
+});     
 });
 
 
@@ -304,7 +341,7 @@ function writeTable(data) {
 					"<tr>"+
 						"<td class='place'>"+data[i]["Place"]+"</td>"+
 		                "<td class='year'>"+data[i]["Built"]+"</td>"+
-		                "<td class='length'>"+data[i]["Length(m)"]+"</td>"+
+		                "<td class='length'>"+data[i]["Length"]+"</td>"+
 		                "<td class='rating'>"+data[i]["Suffrating"]+"</td>"+
 		                "<td class='material'>"+data[i]["MaterialDesign"]+"</td>"+
 		                "<td class='design'>"+data[i]["DesignConstruction"]+"</td>"+
@@ -331,10 +368,3 @@ function writeTable(data) {
 	// - Contributon Information
 	// - Amount
 }
-
-
-
-
-
-
-

@@ -36,7 +36,7 @@ var y = d3.scale.linear()
 //var color = d3.scale.category10();
 
 var color = d3.scale.ordinal()
-    .domain(['Concrete continuous','Steel continuous','Prestressed concrete*', 'Steel', 'Concrete', 'Prestressed concrete continuous'])
+    .domain(['Concrete continuous','Steel continuous','Prestressed concrete*', 'Steel', 'Concrete', 'Aluminum, Wrought Iron, or Cast Iron'])
     .range(["#1b9e77","#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02","#a6761d","#666666"]);
 
 // `xAxis` and `yAxis` are functions as well.
@@ -64,8 +64,12 @@ var svg = d3.select(".chart").append("svg") // Appends the <svg> tag to the .cha
     .attr("class", "chart-g") //assigns the <g> tag a class
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); //Offsets the .chart-g <g> element by the values left and top margins. Basically the same as a left/right position.
 
+
+
 var dropDown = d3.select("#filter").append("select")
                     .attr("name", "MaterialDesign");
+                    
+
 
 
 // /* END GLOBAL VARIABLES ---------------------- */
@@ -219,19 +223,10 @@ if (error) throw error;
                 
                 
 var options = dropDown.selectAll("option")
-         .data(data)
+           .data([{MaterialDesign:"View All"}].concat(data))
          .enter()
-         .append("option");
-         
-var usedMaterial = {};
-$("select[name='MaterialDesign'] > option").each(function () {
-    if(usedMaterial[this.text]) {
-        $(this).remove();
-    } else {
-        usedMaterial[this.text] = this.value;
-    }
-});
-
+           .append("option");
+		
 options.text(function (d) { return d.MaterialDesign; })
          .attr("value", function (d) { return d.MaterialDesign; });
          
@@ -241,15 +236,31 @@ options.text(function (d) { return d.MaterialDesign; })
       displayOthers = this.checked ? "inline" : "none";
       display = this.checked ? "none" : "inline";
 
+      if(selected == 'All'){
+        svg.selectAll(".dot")
+            .attr("display", display);
+      }
+      else{
+        svg.selectAll(".dot")
+            .filter(function(d) {return selected != d.MaterialDesign;})
+            .attr("display", displayOthers);
+            
+        svg.selectAll(".dot")
+            .filter(function(d) {return selected == d.MaterialDesign;})
+            .attr("display", display);
+      }
+  });
+// var design = dropDown.select("option");
+// //          .data(data)
+// //          .enter()
+// //          .append("option");
+// 		
+// design.text(function (d) { return d.MaterialDesign; })
+//          .attr("value", function (d) { return d.MaterialDesign; });
+//      
+// $("select[name='MaterialDesign']").append('<option value="design">View All</option>');
 
-      svg.selectAll(".dot")
-          .filter(function(d) {return selected != d.MaterialDesign;})
-          .attr("display", displayOthers);
           
-      svg.selectAll(".dot")
-          .filter(function(d) {return selected == d.MaterialDesign;})
-          .attr("display", display); 
-          });   
           
           var usedMaterial = {};
 $("select[name='MaterialDesign'] > option").each(function () {
@@ -258,7 +269,13 @@ $("select[name='MaterialDesign'] > option").each(function () {
     } else {
         usedMaterial[this.text] = this.value;
     }
-});     
+});
+
+
+
+
+
+     
 });
 
 

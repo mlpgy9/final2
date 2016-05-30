@@ -1,4 +1,4 @@
-web-app-template-simple
+Final Project
 =======================
 
-A simple web app template with jQuery, and Bootstrap.
+Final project I made in the Intro to News App Class in the spring semester of 2016.

@@ -69,7 +69,7 @@ var svg = d3.select(".chart").append("svg") // Appends the <svg> tag to the .cha
 var dropDown = d3.select("#filter").append("select")
                     .attr("name", "MaterialDesign");
                     
-
+//dropDown.selectAll("option").data(['']).enter().append("option").text('All').attr("value", "all");         
 
 
 // /* END GLOBAL VARIABLES ---------------------- */
@@ -223,7 +223,7 @@ if (error) throw error;
                 
                 
 var options = dropDown.selectAll("option")
-           .data([{MaterialDesign:"View All"}].concat(data))
+           .data([{MaterialDesign:"All"}].concat(data))
          .enter()
            .append("option");
 		
